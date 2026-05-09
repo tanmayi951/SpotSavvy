@@ -129,13 +129,16 @@ h1 {
   gap: 1.5rem; 
   margin-bottom: 3.5rem;
 }
+.stats-row-2col {
+  grid-template-columns: repeat(2, 1fr);
+}
 .stat-card {
   background: var(--card-bg); 
   border: 1px solid rgba(255,255,255,0.1);
   padding: 1.75rem; 
   border-radius: 1rem; 
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   transition: transform 0.2s;
 }
 .stat-card:hover { transform: translateY(-5px); }
@@ -319,7 +322,7 @@ h1 {
 /* UPI Payment Modal */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.8); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
     display: none; justify-content: center; align-items: center; z-index: 1000;
 }
 .modal-content {
@@ -350,6 +353,11 @@ h1 {
     animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
 
 /* LPR Scanner Animation */
 @keyframes scanDown {
@@ -384,9 +392,10 @@ h1 {
         overflow-x: auto;
         gap: 0.5rem;
         padding-bottom: 0.5rem;
-        scrollbar-width: none; /* Hide scrollbar Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
     }
-    .sidebar ul::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+    .sidebar ul::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+    .sidebar ul { scrollbar-width: none; } /* Firefox */
     
     .sidebar li {
         white-space: nowrap;
@@ -437,3 +446,68 @@ h1 {
     
     .modal-content { width: 95%; max-width: none; }
 }
+
+/* ── Classes extracted from inline styles ── */
+
+/* AI View */
+.demo-header-wrap { flex-wrap: wrap; }
+.stat-card-accent { padding: 1rem 1.5rem; border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
+.stat-card-sm { padding: 1rem 1.5rem; }
+.mb-xs { margin-bottom: 0.25rem; }
+.text-lg { font-size: 1.5rem; }
+.text-secondary { color: var(--text-secondary); }
+.text-danger { color: var(--danger); }
+.nav-target { color: white; font-weight: bold; font-size: 1.2rem; margin-top: 0.5rem; }
+.log-waiting { color: var(--text-secondary); margin-top: 2rem; }
+
+/* Buttons */
+.btn-sm { padding: 0.5rem 1rem; }
+.btn-pay-full { width: 100%; margin-top: 1rem; }
+
+/* Payment View */
+.feature-demo-centered { max-width: 800px; margin: 0 auto; text-align: center; }
+.demo-header-centered { justify-content: center; flex-direction: column; gap: 0.5rem; border-bottom: none; margin-bottom: 0; }
+.payment-spots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.payment-no-spots { color: var(--warning); grid-column: 1 / -1; font-size: 1.25rem; padding: 2rem; }
+
+/* Spot card buttons in payment view */
+.btn-spot-card { width: 100%; padding: 1.25rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); }
+.btn-spot-card-hover { background: var(--accent) !important; }
+.spot-card-number { font-size: 1.5rem; font-weight: bold; color: white; }
+.spot-card-lot { font-size: 0.85rem; color: var(--success); text-transform: uppercase; }
+.spot-card-pay { background: var(--accent); color: white; padding: 0.35rem 0.75rem; border-radius: 0.5rem; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 600; }
+
+/* Analytics */
+.bar-40 { height: 40%; }
+.bar-80 { height: 80%; }
+.bar-100 { height: 100%; }
+.bar-60 { height: 60%; }
+.bar-accent { background: var(--accent); }
+.chart-desc { color: var(--text-secondary); font-size: 0.875rem; }
+
+/* LPR status dot */
+.status-dot-warning { background: var(--warning); }
+
+/* LPR Camera */
+.lpr-camera-container { display: flex; gap: 2rem; }
+.video-feed { flex: 1; background: #000; border-radius: 1rem; border: 2px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px; position: relative; overflow: hidden; }
+.lpr-video-feed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+.lpr-video-active { display: block; }
+.lpr-camera-prompt { text-align: center; z-index: 10; }
+.lpr-camera-icon { font-size: 3rem; margin-bottom: 1rem; }
+.lpr-camera-title { margin-bottom: 1rem; color: white; }
+.lpr-scanner-line { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--success); box-shadow: 0 0 15px 3px var(--success); z-index: 20; }
+.lpr-scanner-active { display: block; animation: scanDown 3s infinite linear; }
+.lpr-logs { width: 350px; background: var(--card-bg); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05); max-height: 350px; overflow-y: auto; }
+.lpr-logs-title { margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; }
+.lpr-scan-success { border-left-color: var(--success); }
+.lpr-cam-success { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+
+/* Modal */
+.modal-title { color: white; font-size: 1.25rem; }
+.upi-step-body { color: var(--text-secondary); margin: 1.5rem 1.5rem 1rem; text-align: center; }
+.upi-spot-text { color: white; font-size: 1.5rem; font-weight: bold; }
+.upi-step-centered { text-align: center; padding: 3rem 2rem; }
+.upi-success-icon { font-size: 4rem; color: var(--success); margin-bottom: 1rem; }
+.upi-success-title { color: var(--success); margin-bottom: 0.5rem; font-size: 1.75rem; }
+.upi-success-sub { color: var(--text-secondary); }

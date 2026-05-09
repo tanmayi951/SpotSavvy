@@ -1,7 +1,7 @@
 // Example: Fetching parking data from your backend
 async function getParkingSpots() {
   try {
-    const response = await fetch('http://localhost:3000/api/parking');
+    const response = await fetch('http://localhost:3000/api/parking/lots');
     const data = await response.json();
     
     console.log("Parking Spots:", data);

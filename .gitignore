@@ -6,3 +6,4 @@ build/
 *.log
 coverage/
 .vscode/
+files.zip

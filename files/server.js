@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.get("/", (req, res) => res.send("<h1>✅ SpotSavvy AI Backend is running!</h1><p>This is an API/WebSocket server. The data is currently being streamed securely to your mobile app and dashboard.</p>"));
 app.use("/api/parking", parkingRoutes);
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/payments", paymentRoutes);

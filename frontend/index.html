@@ -39,7 +39,7 @@
             
             <!-- VIEW: MAP (Default) -->
             <div id="view-map" class="dashboard-view active-view">
-                <div class="stats-row" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="stats-row stats-row-2col">
                     <div class="stat-card">
                         <h3>Total City Spots</h3>
                         <div class="stat-value" id="stat-total">0</div>
@@ -57,14 +57,14 @@
             <!-- VIEW: AI RECOMMENDATIONS -->
             <div id="view-ai" class="dashboard-view">
                 <div class="feature-demo">
-                    <div class="demo-header" style="flex-wrap: wrap;">
+                    <div class="demo-header demo-header-wrap">
                         <div>
                             <h2>🤖 Live AI Routing Algorithms</h2>
                             <p>Simulating backend logic processing incoming driver GPS data.</p>
                         </div>
-                        <div class="stat-card" style="padding: 1rem 1.5rem; border-color: var(--accent); background: rgba(59, 130, 246, 0.1);">
-                            <h3 style="margin-bottom: 0.25rem;">Smart Recommendation</h3>
-                            <div class="stat-value text-accent" id="stat-rec" style="font-size: 1.5rem;">Calculating...</div>
+                        <div class="stat-card stat-card-accent">
+                            <h3 class="mb-xs">Smart Recommendation</h3>
+                            <div class="stat-value text-accent text-lg" id="stat-rec">Calculating...</div>
                         </div>
                     </div>
                     <div class="split-view">
@@ -73,17 +73,17 @@
                                 <div class="nav-header">SpotSavvy Nav</div>
                                 <div class="nav-route"></div>
                                 <h3>Turn Left in 200m</h3>
-                                <p style="color: white; font-weight: bold; font-size: 1.2rem; margin-top: 0.5rem;">Target: Spot 14</p>
+                                <p class="nav-target">Target: Spot 14</p>
                                 <div class="nav-reason">Reason: Spot 10 occupied. Recalculated.</div>
                             </div>
                         </div>
                         <div class="backend-logs">
                             <div class="log">[SYS] Driver_492 approach vector registered.</div>
-                            <div class="log" style="color:var(--text-secondary)">[AI] Scanning Lot B for optimal proximity...</div>
-                            <div class="log" style="color:var(--danger)">[ALERT] Spot 10 unexpectedly occupied.</div>
+                            <div class="log text-secondary">[AI] Scanning Lot B for optimal proximity...</div>
+                            <div class="log text-danger">[ALERT] Spot 10 unexpectedly occupied.</div>
                             <div class="log text-accent">[AI] Optimal Target Found: Spot 14.</div>
                             <div class="log">[SYS] Pushing reroute coordinates to mobile app.</div>
-                            <div class="log" style="color:var(--text-secondary); margin-top: 2rem;">Awaiting next vector...</div>
+                            <div class="log log-waiting">Awaiting next vector...</div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="feature-demo">
                     <div class="demo-header">
                         <h2>📅 Active Reservations</h2>
-                        <button class="btn-primary" style="padding: 0.5rem 1rem;">+ New VIP Booking</button>
+                        <button class="btn-primary btn-sm">+ New VIP Booking</button>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -111,13 +111,13 @@
 
             <!-- VIEW: PAYMENTS -->
             <div id="view-payments" class="dashboard-view">
-                <div class="feature-demo" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <div class="demo-header" style="justify-content: center; flex-direction: column; gap: 0.5rem; border-bottom: none; margin-bottom: 0;">
+                <div class="feature-demo feature-demo-centered">
+                    <div class="demo-header demo-header-centered">
                         <h2>💳 Select a Spot to Reserve</h2>
                         <p>Choose an available parking spot from the live list below to pay securely via UPI.</p>
                     </div>
                     
-                    <div id="payment-spots-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div id="payment-spots-list" class="payment-spots-grid">
                         <!-- Populated by JS -->
                         <div style="color: var(--text-secondary); grid-column: 1 / -1;">Loading live spots...</div>
                     </div>
@@ -134,16 +134,16 @@
                         <div class="chart-box">
                             <h3>Peak Utilization</h3>
                             <div class="bar-chart">
-                                <div class="bar" style="height: 40%;"><span>8 AM</span></div>
-                                <div class="bar" style="height: 80%;"><span>12 PM</span></div>
-                                <div class="bar" style="height: 100%; background: var(--accent);"><span>2 PM</span></div>
-                                <div class="bar" style="height: 60%;"><span>6 PM</span></div>
+                                <div class="bar bar-40"><span>8 AM</span></div>
+                                <div class="bar bar-80"><span>12 PM</span></div>
+                                <div class="bar bar-100 bar-accent"><span>2 PM</span></div>
+                                <div class="bar bar-60"><span>6 PM</span></div>
                             </div>
                         </div>
                         <div class="chart-box">
                             <h3>Carbon Emissions Saved</h3>
                             <div class="big-stat">124 kg</div>
-                            <p style="color:var(--text-secondary); font-size:0.875rem;">By eliminating "circling for parking" today through AI routing.</p>
+                            <p class="chart-desc">By eliminating "circling for parking" today through AI routing.</p>
                         </div>
                     </div>
                 </div>
@@ -152,35 +152,35 @@
             <!-- VIEW: LPR -->
             <div id="view-lpr" class="dashboard-view">
                 <div class="feature-demo">
-                    <div class="demo-header" style="flex-wrap: wrap;">
+                    <div class="demo-header demo-header-wrap">
                         <div>
                             <h2>📷 Security Feed (LPR)</h2>
-                            <div class="status-badge" id="lpr-status"><div class="status-dot" style="background:var(--warning)"></div> Camera Offline</div>
+                            <div class="status-badge" id="lpr-status"><div class="status-dot status-dot-warning"></div> Camera Offline</div>
                         </div>
-                        <div class="stat-card" style="padding: 1rem 1.5rem;">
-                            <h3 style="margin-bottom: 0.25rem;">LPR Scans Active</h3>
-                            <div class="stat-value" id="stat-lpr" style="font-size: 1.5rem;">0</div>
+                        <div class="stat-card stat-card-sm">
+                            <h3 class="mb-xs">LPR Scans Active</h3>
+                            <div class="stat-value text-lg" id="stat-lpr">0</div>
                         </div>
                     </div>
                     
                     <!-- Real Webcam Integration -->
-                    <div class="lpr-camera-container" style="display: flex; gap: 2rem;">
-                        <div class="video-feed" style="flex: 1; background: #000; border-radius: 1rem; border: 2px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px; position: relative; overflow: hidden;">
-                            <video id="lpr-video-feed" autoplay playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none;"></video>
+                    <div class="lpr-camera-container">
+                        <div class="video-feed">
+                            <video id="lpr-video-feed" autoplay playsinline class="lpr-video-feed"></video>
                             
-                            <div id="lpr-camera-prompt" style="text-align: center; z-index: 10;">
-                                <div style="font-size: 3rem; margin-bottom: 1rem;">📹</div>
-                                <h3 style="margin-bottom: 1rem; color: white;">Connect Gate Camera</h3>
+                            <div id="lpr-camera-prompt" class="lpr-camera-prompt">
+                                <div class="lpr-camera-icon">📹</div>
+                                <h3 class="lpr-camera-title">Connect Gate Camera</h3>
                                 <button class="btn-primary" onclick="startLPRCamera()">Grant Camera Permission</button>
                             </div>
                             
                             <!-- AI Scanner animation overlay -->
-                            <div id="lpr-scanner-line" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--success); box-shadow: 0 0 15px 3px var(--success); z-index: 20; animation: scanDown 3s infinite linear;"></div>
+                            <div id="lpr-scanner-line" class="lpr-scanner-line"></div>
                         </div>
 
-                        <div class="lpr-logs" style="width: 350px; background: var(--card-bg); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05); max-height: 350px; overflow-y: auto;">
-                            <h3 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase;">Live Detections</h3>
-                            <div class="lpr-feed" id="lpr-feed-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="lpr-logs">
+                            <h3 class="lpr-logs-title">Live Detections</h3>
+                            <div class="lpr-feed" id="lpr-feed-container">
                                 <div class="lpr-scan"><div class="lpr-cam">📷</div><div><div class="lpr-plate">System Ready</div><div class="lpr-time">Awaiting camera feed...</div></div></div>
                             </div>
                         </div>
@@ -195,11 +195,11 @@
     <div id="upi-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 style="color: white; font-size: 1.25rem;">Secure UPI Payment</h3>
+                <h3 class="modal-title">Secure UPI Payment</h3>
                 <button class="close-btn" onclick="closeUPIGateway()">✕</button>
             </div>
             <div id="upi-step-1">
-                <p style="color:var(--text-secondary); margin: 1.5rem 1.5rem 1rem; text-align: center;">Scan QR to reserve Spot <br><span id="upi-spot-id" style="color:white; font-size: 1.5rem; font-weight:bold;"></span></p>
+                <p class="upi-step-body">Scan QR to reserve Spot <br><span id="upi-spot-id" class="upi-spot-text"></span></p>
                 <div class="qr-container">
                     <!-- Real working UPI QR code format (simulated merchant) -->
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=spotsavvy@upi&pn=SpotSavvy&am=30.00&cu=INR" alt="UPI QR">
@@ -207,18 +207,18 @@
                 <div class="divider"><span>OR</span></div>
                 <div class="upi-input-group">
                     <input type="text" id="upi-id-input" placeholder="Enter UPI ID (e.g. user@ybl)" />
-                    <button class="btn-primary" onclick="processUPIPayment()" style="width:100%; margin-top: 1rem;">Pay ₹30.00 Securely</button>
+                    <button class="btn-primary btn-pay-full" onclick="processUPIPayment()">Pay ₹30.00 Securely</button>
                 </div>
             </div>
-            <div id="upi-step-processing" style="display:none; text-align:center; padding: 3rem 2rem;">
+            <div id="upi-step-processing" class="upi-step-centered" style="display:none;">
                 <div class="spinner"></div>
                 <h3 style="margin-top:1.5rem; color: var(--accent);">Processing Payment...</h3>
                 <p style="color:var(--text-secondary); margin-top: 0.5rem;">Securely connecting to your bank.</p>
             </div>
-            <div id="upi-step-success" style="display:none; text-align:center; padding: 3rem 2rem;">
-                <div style="font-size: 4rem; color: var(--success); margin-bottom: 1rem;">✅</div>
-                <h3 style="color: var(--success); margin-bottom: 0.5rem; font-size: 1.75rem;">Payment Successful!</h3>
-                <p style="color:var(--text-secondary);">₹30.00 received. Your spot is secured.</p>
+            <div id="upi-step-success" class="upi-step-centered" style="display:none;">
+                <div class="upi-success-icon">✅</div>
+                <h3 class="upi-success-title">Payment Successful!</h3>
+                <p class="upi-success-sub">₹30.00 received. Your spot is secured.</p>
             </div>
         </div>
     </div>
@@ -330,28 +330,18 @@
                 const availableSpots = spotsArray.filter(s => s.status === 'available');
                 
                 if(availableSpots.length === 0) {
-                    paymentSpotsList.innerHTML = '<div style="color: var(--warning); grid-column: 1 / -1; font-size: 1.25rem; padding: 2rem;">No spots currently available in any lot!</div>';
+                    paymentSpotsList.innerHTML = '<div class="payment-no-spots">No spots currently available in any lot!</div>';
                 } else {
                     availableSpots.forEach(spot => {
                         const btn = document.createElement('button');
-                        btn.className = 'btn-reserve';
-                        btn.style.width = '100%';
-                        btn.style.padding = '1.25rem 1rem';
-                        btn.style.display = 'flex';
-                        btn.style.flexDirection = 'column';
-                        btn.style.alignItems = 'center';
-                        btn.style.gap = '0.5rem';
-                        btn.style.background = 'rgba(16, 185, 129, 0.1)';
-                        btn.style.border = '1px solid rgba(16, 185, 129, 0.3)';
-                        
+                        btn.className = 'btn-reserve btn-spot-card';
                         btn.innerHTML = `
-                            <span style="font-size: 1.5rem; font-weight: bold; color: white;">Spot ${spot.number}</span> 
-                            <span style="font-size: 0.85rem; color: var(--success); text-transform: uppercase;">${spot.lotId.replace('_', ' ')}</span> 
-                            <span style="background: var(--accent); color: white; padding: 0.35rem 0.75rem; border-radius: 0.5rem; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 600;">Pay ₹30.00</span>
+                            <span class="spot-card-number">Spot ${spot.number}</span> 
+                            <span class="spot-card-lot">${spot.lotId.replace('_', ' ')}</span> 
+                            <span class="spot-card-pay">Pay ₹30.00</span>
                         `;
-                        
-                        btn.onmouseover = () => btn.style.background = 'var(--accent)';
-                        btn.onmouseout = () => btn.style.background = 'rgba(16, 185, 129, 0.1)';
+                        btn.onmouseover = () => btn.classList.add('btn-spot-card-hover');
+                        btn.onmouseout = () => btn.classList.remove('btn-spot-card-hover');
                         
                         btn.onclick = () => openUPIGateway(spot.id);
                         paymentSpotsList.appendChild(btn);
@@ -408,11 +398,11 @@
                 // Set the video element to play the live camera feed
                 const videoElement = document.getElementById('lpr-video-feed');
                 videoElement.srcObject = stream;
-                videoElement.style.display = 'block';
+                videoElement.classList.add('lpr-video-active');
 
                 // Hide the prompt and show the AI scanner animation
                 document.getElementById('lpr-camera-prompt').style.display = 'none';
-                document.getElementById('lpr-scanner-line').style.display = 'block';
+                document.getElementById('lpr-scanner-line').classList.add('lpr-scanner-active');
                 
                 // Update status badge to Green
                 const statusBadge = document.getElementById('lpr-status');
@@ -424,8 +414,8 @@
                     const lprFeed = document.getElementById('lpr-feed-container');
                     const newScan = document.createElement('div');
                     newScan.innerHTML = `
-                        <div class="lpr-scan" style="border-left-color: var(--success)">
-                            <div class="lpr-cam" style="background: rgba(16, 185, 129, 0.2); color: var(--success)">✓</div>
+                        <div class="lpr-scan lpr-scan-success">
+                            <div class="lpr-cam lpr-cam-success">✓</div>
                             <div>
                                 <div class="lpr-plate">KA04 MZ 1234</div>
                                 <div class="lpr-time">Vehicle Entry Authorized</div>
